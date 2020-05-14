@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: users-config
+data:
+  DATABASE_HOST: 'mysql'
+  DATABASE_PORT: '3306'
+  #DATABASE_USERNAME: 'minikube'
+  #DATABASE_PASSWORD: 'minikube'
+  DATABASE_SCHEMA: 'coches'
+  CORS_ORIGIN: 'http://localhost:4200'
