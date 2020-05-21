@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../entities/user.entity';
 import { CreateUserDto } from '../dtos/create-user';
+import { TokenGenerator } from './token-generator.service';
 
 @Injectable()
 export class UserService {
@@ -11,10 +12,10 @@ export class UserService {
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
+    private tokenGenerator: TokenGenerator
   ) {}
 
   findAll(): Promise<User[]> {
-    console.log('findALL')
     return this.userRepository.find();
   }
 
@@ -26,10 +27,13 @@ export class UserService {
     await this.userRepository.delete(id);
   }
 
-  create(body: CreateUserDto) {
-    const user = new User();
+  async create(body: CreateUserDto) {
+    let user = new User();
     user.alias = body.alias;
     user.isActive = true;
-    return this.userRepository.save(user);
+    user = await this.userRepository.save(user);
+
+    const token = await this.tokenGenerator.generateUserToken(user);
+    return { token };
   }
 }
