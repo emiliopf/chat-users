@@ -4,7 +4,7 @@ import databaseConfig from './config/database';
 import appConfig from './config/app';
 import jwtConfig from './config/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserModule } from './user.module';
+import { UsersModule } from './users.module';
 
 @Module({
   imports: [
@@ -18,7 +18,7 @@ import { UserModule } from './user.module';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => (configService.get('database')),
     }),
-    UserModule,
+    UsersModule,
   ],
 })
 export class AppModule {}

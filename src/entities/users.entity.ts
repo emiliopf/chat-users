@@ -1,13 +1,10 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class User {
+export class Users {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ length: 500 })
   alias: string;
-
-  @Column()
-  isActive: boolean;
 }

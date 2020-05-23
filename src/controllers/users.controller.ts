@@ -1,5 +1,5 @@
 import { Controller, Get, Delete, Param, Post, Body, UseGuards } from '@nestjs/common';
-import { User } from '../entities/user.entity';
+import { Users } from '../entities/users.entity';
 import { CreateUserDto } from '../dtos/create-user';
 import { UserService } from '../services/user.service';
 import { IsUserGuard } from '../guards/users.guard';
@@ -17,7 +17,7 @@ export class UsersController {
 
   @Get('/all')
   @UseGuards(IsUserGuard)
-  findAll(): Promise<User[]> {
+  findAll(): Promise<Users[]> {
     return this.userService.findAll();
   };
 

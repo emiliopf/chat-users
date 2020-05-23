@@ -2,14 +2,14 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule, JwtService } from '@nestjs/jwt'
-import { User } from './entities/user.entity';
+import { Users } from './entities/users.entity';
 import { UserService } from './services/user.service';
 import { UsersController } from './controllers/users.controller';
 import { TokenGenerator } from './services/token-generator.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([Users]),
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -25,4 +25,4 @@ import { TokenGenerator } from './services/token-generator.service';
   ],
   controllers: [UsersController],
 })
-export class UserModule {}
+export class UsersModule {}

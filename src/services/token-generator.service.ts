@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { User } from '../entities/user.entity';
+import { Users } from '../entities/users.entity';
 import { ConfigService } from "@nestjs/config";
 
 
@@ -13,7 +13,7 @@ export class TokenGenerator {
     ) {}
 
 
-  async generateUserToken(user: User) {
+  async generateUserToken(user: Users) {
     const payload = {
       userId: user.id
     }
