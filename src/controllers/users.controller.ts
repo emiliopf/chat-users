@@ -3,12 +3,17 @@ import { Users } from '../entities/users.entity';
 import { CreateUserDto } from '../dtos/create-user';
 import { UserService } from '../services/user.service';
 import { IsUserGuard } from '../guards/users.guard';
+import { TokenGenerator } from '../services/token-generator.service';
+import { TokenPayload } from '../dtos/token-payload';
 
 
 @Controller('users')
 export class UsersController {
   
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private tokenGenerator: TokenGenerator,
+  ) {}
 
   @Get()
   test(): string {
@@ -29,5 +34,10 @@ export class UsersController {
   @Post('/create')
   create(@Body() body: CreateUserDto) {
     return this.userService.create(body);
+  }
+
+  @Post('/token')
+  token(@Body() body: TokenPayload) {
+    return this.tokenGenerator.generateUserToken(body);
   }
 }

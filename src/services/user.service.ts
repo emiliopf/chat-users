@@ -32,7 +32,6 @@ export class UserService {
     user.alias = body.alias;
     user = await this.userRepository.save(user);
 
-    const token = await this.tokenGenerator.generateUserToken(user);
-    return { token };
+    return user;
   }
 }
