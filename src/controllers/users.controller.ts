@@ -20,6 +20,11 @@ export class UsersController {
     return 'Test users controllersdsd';
   }
 
+  @Get('/:id')
+  findById(@Param('id') id: number) {
+    return this.userService.findOne(id); 
+  }
+
   @Get('/all')
   @UseGuards(IsUserGuard)
   findAll(): Promise<Users[]> {
