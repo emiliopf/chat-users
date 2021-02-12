@@ -17,7 +17,7 @@ export class UsersController {
 
   @Get()
   test(): string {
-    return 'Test users controllersdsd';
+    return 'Test users controllers 2';
   }
 
   @Get('/:id')
@@ -38,6 +38,7 @@ export class UsersController {
 
   @Post('/create')
   create(@Body() body: CreateUserDto) {
+    console.log('users/create s');
     return this.userService.create(body);
   }
 
