@@ -19,7 +19,7 @@
         <li><a href="#set-up">Set Up</a></li>
       </ul>
     </li>
-    <li><a href="#endponits">Endpoints</a></li>
+    <li><a href="#endpoints">Endpoints</a></li>
     <li><a href="#built-with">Built With</a></li>
     <li><a href="#license">License</a></li>
   </ol>
@@ -97,6 +97,10 @@ RESPONSE:
 }
 ```
 
+## Built with
+
+*[NestJS](https://nestjs.com/)
+
 ## License
 
-  Nest is [MIT licensed](LICENSE).
+[MIT licensed](LICENSE).
